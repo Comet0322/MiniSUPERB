@@ -1,0 +1,48 @@
+runner:
+  total_steps: 15000
+  gradient_clipping: 1.0
+  gradient_accumulate_steps: 1
+
+  log_step: 1500
+  eval_step: 1500
+  save_step: 1500
+  max_keep: 100
+  eval_dataloaders:
+    - dev
+  test_dataloaders:
+    - test
+
+optimizer:
+  name: AdamW
+  lr: 1.e-3
+
+downstream_expert:
+  datarc:
+    num_speakers: 2
+    rate: 16000
+    src: ['mix_clean']
+    tgt: ['s1', 's2']
+    n_fft: 1024
+    win_length: 1024
+    window: "hann"
+    center: True
+
+  loaderrc:
+    num_workers: 4
+    train_batch_size: 8
+    eval_batch_size: 1
+    train_dir: ./downstream/separation_stft2/datasets/Libri2Mix/wav16k/min/train-100
+    dev_dir: ./downstream/separation_stft2/datasets/Libri2Mix/wav16k/min/dev_1000
+    test_dir: ./downstream/separation_stft2/datasets/Libri2Mix/wav16k/min/test
+  
+  modelrc: 
+    model: SepRNN
+    rnn: LSTM
+    rnn_layers: 3
+    hidden_size: 256
+    dropout: 0.1
+    non_linear: sigmoid
+    bidirectional: True
+    loss_type: MSE
+    mask_type: NPSM
+    log: log1p
