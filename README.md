@@ -42,7 +42,8 @@ The following upstream models are supported:
 Start a new downstream training experiment with the following command:
 
 ```bash
-bash minisuperb/Task.sh UpstreamModelName DataStorage
+cd minisuperb
+bash Task.sh UpstreamModelName DataStorage
 ```
 
 ## Installation
