@@ -161,9 +161,8 @@ bash ss.sh UpstreamModelName DataStorage
 ## Features Under Development
 
     1. Support for custom upstream models 
-    2. Provide download links for sampled datasets
-    3. Evaluation Scripts for Speech Enhancement (SE) and Source Separation (SS)
-    4. Pipeline to calculate MiniSUPERB score for custom SSL models.
+    2. Evaluation Scripts for Speech Enhancement (SE) and Source Separation (SS)
+    3. Pipeline to calculate MiniSUPERB score for custom SSL models.
 
 ## License
 
