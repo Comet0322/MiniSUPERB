@@ -140,6 +140,7 @@ bash asr.sh UpstreamModelName DataStorage
 # To evaluate a model on SID:
 bash sid.sh UpstreamModelName DataStorage
 
+# SE, SS are still under development
 # To evaluate a model on SE:
 bash se.sh UpstreamModelName DataStorage
 
