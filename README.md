@@ -24,18 +24,21 @@ The project was developed using the following environments.
 ## Introduction and Usages
 
 MiniSUPERB supports four downstream tasks:
-- Automatic Speech Recognition (asr)
-- Speaker Idendification (sid)
-- Speech Enhancement (se)
-- Source Separation (ss)
+- Automatic Speech Recognition (ASR)
+- Speaker Idendification (SID)
+- Speech Enhancement (SE)
+- Source Separation (SS)
 
 The following upstream models are supported:
-- WavLM
-- HuBert
-- Wav2Vec 2.0
-- CPC
-- TERA
-- DeCoAR 2.0
+| Models       | Upstream Model Name                      | Paper                                     |
+|--------------|------------------------------------------|-------------------------------------------|
+| WavLM        | wavlm_base, wavlm_base_plus, wavlm_large | [arxiv](https://arxiv.org/abs/2110.13900) |
+| HuBERT       | hubert_base, hubert_large_ll60k          | [arxiv](https://arxiv.org/abs/2106.07447) |
+| Wav2Vec 2.0  | wav2vec2, wav2vec2_large_ll60k           | [arxiv](https://arxiv.org/abs/2006.11477) |
+| Modified-CPC | modified_cpc                             | [arxiv](https://arxiv.org/abs/2002.02848) |
+| TERA         | tera                                     | [arxiv](https://arxiv.org/abs/2007.06028) |
+| DeCoAR 2.0   | decoar2                                  | [arxiv](https://arxiv.org/abs/2012.06659) |
+| Filter Bank  | fbank, fbank_no_cmvn (used for SID)      |                                           |
 
 ## Usage
 
@@ -43,13 +46,26 @@ Start a new downstream training experiment with the following command:
 
 ```bash
 cd minisuperb
-bash Task.sh UpstreamModelName DataStorage
+
+# To evaluate a model on ASR:
+bash asr.sh UpstreamModelName DataStorage
+
+# To evaluate a model on SID:
+bash sid.sh UpstreamModelName DataStorage
+
+# SE and SS are currently under development:
+# To evaluate a model on SE:
+bash se.sh UpstreamModelName DataStorage
+
+# To evaluate a model on SS):
+bash ss.sh UpstreamModelName DataStorage
 ```
 
 ## Installation
 
 1. Install **sox** on your OS
 2. Install dependencies `pip install -e ".[all]"`
+
 
 ## License
 
