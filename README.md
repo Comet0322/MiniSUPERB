@@ -57,6 +57,25 @@ The following upstream models are supported:
 
 #### SID
 1. Download dataset from [Voxceleb1](https://www.robots.ox.ac.uk/~vgg/data/voxceleb/vox1.html) and unzip them.
+    ```bash
+    voxceleb1_root="DataStorage/VoxCeleb1/"
+    mkdir -p $voxceleb1_root/dev
+    mkdir -p $voxceleb1_root/test
+
+    # prepare dev
+    cd $voxceleb1_root/dev/
+    wget https://thor.robots.ox.ac.uk/~vgg/data/voxceleb/vox1a/vox1_dev_wav_partaa
+    wget https://thor.robots.ox.ac.uk/~vgg/data/voxceleb/vox1a/vox1_dev_wav_partab
+    wget https://thor.robots.ox.ac.uk/~vgg/data/voxceleb/vox1a/vox1_dev_wav_partac
+    wget https://thor.robots.ox.ac.uk/~vgg/data/voxceleb/vox1a/vox1_dev_wav_partad
+    cat vox1_dev* > vox1_dev_wav.zip
+    unzip vox1_dev_wav.zip
+
+    # prepare test
+    cd $voxceleb1_root/test/
+    wget https://thor.robots.ox.ac.uk/~vgg/data/voxceleb/vox1a/vox1_test_wav.zip
+    unzip vox1_test_wav.zip
+    ```
 2. Check prepared file structure
     ```bash
     DataStorage
