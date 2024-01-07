@@ -28,8 +28,6 @@ class UpstreamExpert(UpstreamBase):
         self.model.feature_grad_mult = 0.0
         self.model.encoder.layerdrop = 0.0
 
-        # These options are only used for aligning representations between s3prl and huggingface
-        # See utility/compare_wav2vec2.py
         self.apply_padding_mask = True
         self.numpy_wav_normalize = False
 
@@ -111,7 +109,7 @@ class LegacyUpstreamExpert(UpstreamBase):
         self.model.feature_grad_mult = 0.0
         self.model.encoder.layerdrop = 0.0
 
-        # These options are only used for aligning representations between s3prl and huggingface
+        # These options are only used for aligning representations between minisuperb and huggingface
         # See utility/compare_wav2vec2.py
         self.apply_padding_mask = True
         self.numpy_wav_normalize = False

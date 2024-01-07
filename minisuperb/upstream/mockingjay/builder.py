@@ -53,7 +53,7 @@ class TransformerBuilder(nn.Module):
             self.config = yaml.load(open(config, "r"), Loader=yaml.FullLoader)
         else:
             # Since some old checkpoints contained pickled scheduler which needs 'optimizers'
-            # module which is now moved into s3prl package.
+            # module which is now moved into minisuperb package.
             original_optimizer = sys.modules.get("optimizers")
             sys.modules["optimizers"] = minisuperb.optimizers
 

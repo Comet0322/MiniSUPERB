@@ -52,7 +52,7 @@ class PredictorMockingjay(nn.Module):
                 A boolean which controls whether to return the `hidden_states` of the predictor.
                 Default: False
         Return:
-            Output (s3prl.Output):
+            Output (minisuperb.Output):
                 An Output module that contains `prediction` and/or `hidden_states`.
         """
         hidden_states = inputs.hidden_states

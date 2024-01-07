@@ -34,11 +34,11 @@ MODEL_CARD_MARKDOWN = """---
 datasets:
 - superb
 tags:
-- library:s3prl
+- library:minisuperb
 - benchmark:superb
 - type:model
 ---
-# Fine-tuned s3prl model
+# Fine-tuned minisuperb model
 Upstream Model: {upstream_model}
 ## Model description
 [More information needed]
@@ -209,7 +209,7 @@ class Runner():
 
     def _get_downstream(self):
         expert = importlib.import_module(
-            f"s3prl.downstream.{self.args.downstream}.expert")
+            f"minisuperb.downstream.{self.args.downstream}.expert")
         Downstream = getattr(expert, "DownstreamExpert")
 
         model = Downstream(upstream_dim=self.featurizer.model.output_dim,

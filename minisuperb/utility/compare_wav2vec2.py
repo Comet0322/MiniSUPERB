@@ -19,18 +19,18 @@ assert version.parse(transformers.__version__) <= version.parse(
     "4.9.0"
 ), "Newer version of transformers change the places for feature extraction."
 assert args.base or args.large
-s3prl_str = "wav2vec2_base_960" if args.base else "wav2vec2_large_ll60k"
+minisuperb_str = "wav2vec2_base_960" if args.base else "wav2vec2_large_ll60k"
 huggingface_str = "wav2vec2_hug_base_960" if args.base else "wav2vec2_hug_large_ll60k"
 
-s3prl = getattr(hub, s3prl_str)().to(args.device)
+minisuperb = getattr(hub, minisuperb_str)().to(args.device)
 huggingface = getattr(hub, huggingface_str)().to(args.device)
 
 if args.base:
-    s3prl.wav_normalize = True
-    s3prl.apply_padding_mask = False
-s3prl.numpy_wav_normalize = True
+    minisuperb.wav_normalize = True
+    minisuperb.apply_padding_mask = False
+minisuperb.numpy_wav_normalize = True
 
-s3prl.eval()
+minisuperb.eval()
 huggingface.eval()
 
 wavs = [
@@ -40,7 +40,7 @@ wavs = [
 ]
 
 with torch.no_grad():
-    hiddens1 = s3prl(wavs)["hidden_states"]
+    hiddens1 = minisuperb(wavs)["hidden_states"]
     hiddens2 = huggingface(wavs)["hidden_states"]
     assert len(hiddens1) == len(hiddens2)
 

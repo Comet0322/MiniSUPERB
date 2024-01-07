@@ -29,7 +29,7 @@ class HearFullyConnectedPrediction(torch.nn.Module):
         dropout (float): dropout ratio. Default: 0.1
         initialization (str): initialization method name available in :obj:`torch.nn.init`
         hidden_norm (str): normalization method name available in :obj:`torch.nn`
-        pooling_type (str): the pooling class name in :obj:`s3prl.nn.pooling`. Default: MeanPooling
+        pooling_type (str): the pooling class name in :obj:`minisuperb.nn.pooling`. Default: MeanPooling
         pooling_conf (dict): the arguments for initializing the pooling class.
             Default: empty dict
     """

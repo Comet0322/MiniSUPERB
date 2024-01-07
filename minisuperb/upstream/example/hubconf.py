@@ -8,17 +8,17 @@ def customized_upstream(*args, **kwargs):
     used to register the UpstreamExpert in upstream/example/expert.py
     The following is a brief introduction of the registration mechanism.
 
-    The s3prl/hub.py will collect all the entries registered in this file
+    The minisuperb/hub.py will collect all the entries registered in this file
     (callable variables without the underscore prefix) as a centralized
     upstream factory. One can pick up this upstream from the factory via
 
     1.
-    from s3prl.hub import customized_upstream
+    from minisuperb.hub import customized_upstream
     model = customized_upstream(ckpt, model_config)
 
     2.
     model = torch.hub.load(
-        'your_s3prl_path',
+        'your_minisuperb_path',
         'customized_upstream',
         ckpt,
         model_config,
