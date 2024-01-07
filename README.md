@@ -41,7 +41,75 @@ The following upstream models are supported:
 | Filter Bank  | fbank, fbank_no_cmvn (used for SID)      |                                           |
 
 ## Usage
+### Prepare data
+#### ASR
 
+1. Download [librispeech_finetuning.tgz] (https://github.com/facebookresearch/libri-light/blob/main/data_preparation/README.md) and dev-clean, and test-clean from [LibriSpeech](https://www.openslr.org/12).
+
+2. Unzip and check the prepared file structure
+    ```bash
+    DataStorage
+    └── LibriSpeech/
+        ├── librispeech_finetuning/
+        ├── dev-clean/
+        └── test-clean/
+    ```
+
+#### SID
+1. Download dataset from [Voxceleb1](https://www.robots.ox.ac.uk/~vgg/data/voxceleb/vox1.html) and unzip them.
+2. Check prepared file structure
+    ```bash
+    DataStorage
+    └── Voxceleb1/
+        ├── dev/
+        │   └── wav/
+        │       └──Speaker id folders
+        └── test/
+            └── wav/
+                └──Speaker id folders
+    ```
+#### SE
+1. Download Voicebank-DEMAND dataset prepared by [s3prl](https://github.com/s3prl/s3prl) 
+    ```bash
+    wget http://140.112.21.28:9000/noisy-vctk-16k.zip
+    unzip noisy-vctk-16k.zip
+    ```
+
+2. Check the unzipped voicebank directory structure
+
+    ```bash
+    DataStorage
+        └── noisy-vctk-16k/
+            ├── clean_testset_wav_16k/
+            ├── clean_trainset_28spk_wav_16k/
+            ├── noisy_testset_wav_16k/
+            ├── noisy_trainset_28spk_wav_16k/
+            ├── testset_txt/
+            └── trainset_28spk_txt/
+    ```
+#### SS
+1. Simulate Libri2Mix data for source separation. For source separation, we only need 16kHz and min condition. 
+**Make sure that SoX is installed on your machine** 
+
+    ```bash
+    # Download the script and simulate Libri2Mix dataset
+    git clone https://github.com/s3prl/LibriMix.git
+    cd LibriMix 
+    ./generate_librimix_ss.sh DataStorage
+    ```
+2. Check the unzipped voicebank directory structure
+    ```bash
+    DataStorage
+        └── Libri2Mix/
+            └── wav16k/
+                └── min/
+                    ├── train-100/
+                    ├── dev/
+                    ├── test/
+                    └── metadata/
+    ```
+
+### SSL Model Evaluation
 Start a new downstream training experiment with the following command:
 
 ```bash
@@ -53,7 +121,6 @@ bash asr.sh UpstreamModelName DataStorage
 # To evaluate a model on SID:
 bash sid.sh UpstreamModelName DataStorage
 
-# SE and SS are currently under development:
 # To evaluate a model on SE:
 bash se.sh UpstreamModelName DataStorage
 
@@ -64,13 +131,19 @@ bash ss.sh UpstreamModelName DataStorage
 ## Installation
 
 1. Install **sox** on your OS
+
+    For Linux :
+    ```
+    conda install -c conda-forge sox
+    ```
 2. Install dependencies `pip install -e ".[all]"`
 
 ## Features Under Development
 
-1. Support for custom upstream models 
-2. Scripts for data sampling for Speech Enhancement (SE) and Source Separation (SS)
-3. Pipeline to calculate MiniSUPERB score for custom SSL models.
+    1. Support for custom upstream models 
+    2. Provide download links for sampled datasets
+    3. Evaluation Scripts for Speech Enhancement (SE) and Source Separation (SS)
+    4. Pipeline to calculate MiniSUPERB score for custom SSL models.
 
 ## License
 
