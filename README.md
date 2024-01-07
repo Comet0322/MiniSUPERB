@@ -66,6 +66,11 @@ bash ss.sh UpstreamModelName DataStorage
 1. Install **sox** on your OS
 2. Install dependencies `pip install -e ".[all]"`
 
+## Features Under Development
+
+1. Support for custom upstream models 
+2. Scripts for data sampling for Speech Enhancement (SE) and Source Separation (SS)
+3. Pipeline to calculate MiniSUPERB score for custom SSL models.
 
 ## License
 
